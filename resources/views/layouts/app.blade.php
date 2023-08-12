@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Book Reviews</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+
+    {{-- AlpineJs CDN --}}
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+    {{-- blade-formatter-disable --}}
+  <style type="text/tailwindcss">
+    .btn {
+      @apply bg-white rounded-md px-4 py-2 text-center font-medium text-slate-500 shadow-sm ring-1 ring-slate-700/10 hover:bg-slate-50 h-10;
+    }
+
+    .input {
+      @apply shadow-sm appearance-none border w-full py-2 px-3 text-slate-700 leading-tight focus:outline-none rounded-md border-slate-300;
+    }
+
+    .filter-container {
+      @apply mb-4 flex space-x-2 rounded-md bg-slate-100 p-2;
+    }
+
+    .filter-item {
+      @apply flex w-full items-center justify-center rounded-md px-4 py-2 text-center text-sm font-medium text-slate-500;
+    }
+
+    .filter-item-active {
+      @apply bg-white shadow-sm text-slate-800 flex w-full items-center justify-center rounded-md px-4 py-2 text-center text-sm font-medium;
+    }
+
+    .book-item {
+      @apply text-sm rounded-md bg-white p-4 leading-6 text-slate-900 shadow-md shadow-black/5 ring-1 ring-slate-700/10;
+    }
+
+    .book-title {
+      @apply text-lg font-semibold text-slate-800 hover:text-slate-600;
+    }
+
+    .book-author {
+      @apply block text-slate-600;
+    }
+
+    .book-rating {
+      @apply text-sm font-medium text-slate-700 text-center;
+    }
+
+    .book-review-count {
+      @apply text-xs text-slate-500;
+    }
+
+    .empty-book-item {
+      @apply text-sm rounded-md bg-white py-10 px-4 text-center leading-6 text-slate-900 shadow-md shadow-black/5 ring-1 ring-slate-700/10;
+    }
+
+    .empty-text {
+      @apply font-medium text-slate-500;
+    }
+
+    .reset-link {
+      @apply text-slate-500 underline;
+    }
+
+    .error {
+        @apply text-red-500 text-sm
+    }
+  </style>
+  {{-- blade-formatter-enable --}}
+</head>
+
+<body class="container mx-auto mt-10 mb-10 max-w-4xl bg-gray-100">
+    <div class="mt-8 bg-white p-4 shadow rounded-lg">
+
+        <!-- Display Content section -->
+        <div x-data="{ flash: true }"> {{-- x-data allow to define a new alpinejs component --}}
+            {{-- Display flash message of success linked to route --}}
+            @if (session()->has('success'))
+
+                <div x-show="flash"
+                    class="relative mb-10 rounded border border-green-400 bg-green-100 px-4 py-3 text-lg text-green-700"
+                    role="alert">
+                    <strong class="font-bold">Success!</strong>
+                    <div>{{ session('success') }}</div>
+
+                    {{-- close icon on top right corner --}}
+                    <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            @click="flash = false" {{-- the click event will set the flash variable to false --}}
+                            stroke="currentColor" class="h-6 w-6 cursor-pointer">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </span>
+                </div>
+            @endif
+
+            @yield('content')
+        </div>
+    </div>
+</body>
+
+</html>
