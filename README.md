@@ -12,7 +12,13 @@ Simple book reviews management application built using Laravel 10 and TailwindCS
 
 ## Screenshots 🖼️
 
-![alt text](?raw=true)
+![alt text](https://github.com/joaocba/laravel-book-reviews/blob/main/screenshots/main_page_list_books.png?raw=true)
+
+![alt text](https://github.com/joaocba/laravel-book-reviews/blob/main/screenshots/main_page_add_book.png?raw=true)
+
+![alt text](https://github.com/joaocba/laravel-book-reviews/blob/main/screenshots/book_page_view_reviews.png?raw=true)
+
+![alt text](https://github.com/joaocba/laravel-book-reviews/blob/main/screenshots/book_page_add_review.png?raw=true)
 
 ## Usage 🛠️
 
